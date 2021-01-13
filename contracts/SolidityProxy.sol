@@ -1,22 +1,23 @@
 pragma solidity ^0.6.10;
 
 contract SolidityProxy {
-    address public a;
+    address public a;      // takes 20 bytes of the slot
+    int64 public _empty0; // take another 12*8 bits of the slot, so bool would take the whole next slot
+    int32 public _empty1;
     bool public b;
     uint256 public c;
 
     // for testing only
     address delegationTarget;
 
-    constructor(
-        address _a,
-        address _delegationTarget
+    constructor(address _a, address _delegationTarget
     ) public {
         a = _a;
 //      b = false;
         c = block.timestamp + 2;
         delegationTarget = _delegationTarget;
     }
+
 
  // The proxy code is from https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/proxy/Proxy.sol
  /**

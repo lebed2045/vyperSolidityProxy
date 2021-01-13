@@ -32,8 +32,17 @@ contract('test', (accounts) => {
         //     c: '1609608805'
         // }
 
+        console.log("solidityProxy.set_b_true();");
         await this.solidityProxy.set_b_true();
         console.log(await getState(this.solidityProxy));
+        console.log("solidityProxy.set_a_dai();")
+        await this.solidityProxy.set_a_dai();
+        console.log(await getState(this.solidityProxy));
+        console.log("solidityProxy.set_c_big();");
+        await this.solidityProxy.set_c_big();
+        console.log(await getState(this.solidityProxy));
+
+        // console.log(await getState(this.solidityProxy));
         // { a: '0xA51043a9afD5e8Fd2869b2cb6d83b568650CB4A4', b: 'false', c: '1' }
         // different result is expected!!!
     });
